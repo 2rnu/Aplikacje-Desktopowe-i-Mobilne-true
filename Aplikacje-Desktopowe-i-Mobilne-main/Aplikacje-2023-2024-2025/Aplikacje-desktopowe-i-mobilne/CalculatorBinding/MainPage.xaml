@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorBinding.MainPage"
+             x:Name="thisPage"
+             BindingContext ="{x:Reference thisPage}">
+
+    <ScrollView>
+        <VerticalStackLayout 
+            BackgroundColor="LightGray"
+            Spacing="10">
+
+            <StackLayout Orientation="Horizontal" BackgroundColor="DarkGray">
+                <Label Text="{Binding Source = {x:Reference}}"
+                       VerticalOptions="Center"/>
+                <Entry HorizontalOptions="FillAndExpand" 
+                       Placeholder="Wpisz pierwszą liczbę" 
+                       PlaceholderColor="Black"
+                       x:Name="firstEntryNumber"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" BackgroundColor="DarkGray">
+                <Label Text="Druga liczba:"
+                        VerticalOptions="Center"/>
+                <Entry HorizontalOptions="FillAndExpand" 
+                       Placeholder="Wpisz drugą liczbę" 
+                       PlaceholderColor="Black"
+                       x:Name="secondEntryNumber"/>
+            </StackLayout>
+
+            <Label Text="Opcje:"
+                   FontSize="20"
+                   FontFamily="Arial"
+                   FontAttributes="Italic,Bold"/>
+
+            <RadioButton Content="Dodawanie:   +"
+                         x:Name="operationAddRadioButton"/>
+            <RadioButton Content="Odejmowanie:   -"
+                         x:Name="operationSubstrationRadioButton"/>
+            <RadioButton Content="Mnożenie:   ×"
+                         x:Name="operationMultiplicationRadioButton"/>
+            <RadioButton Content="Dzielenie:   ÷"
+                         x:Name="operationDivisionRadioButton"/>
+
+            <Button Text="Oblicz"
+                HorizontalOptions="Center"
+                BackgroundColor="AliceBlue"
+                TextColor="Black"
+                WidthRequest="220"
+                HeightRequest="50"
+                Clicked="Button_Clicked"/>
+
+            <Label
+                x:Name="resaultLabel"
+                Text="{Binding Source={x:Reference levelSlider}, Path=Value, StringFormat=Poziom suwaka {0}}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>
