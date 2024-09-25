@@ -1,6 +1,8 @@
-﻿using Microsoft.UI.Xaml;
+﻿//using Microsoft.UI.Xaml;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+//using static Android.Util.EventLogTags;
+//using static Java.Util.Jar.Attributes;
 
 namespace ShowCollectionMauiApp
 {
@@ -19,7 +21,17 @@ namespace ShowCollectionMauiApp
 
         public string NewFruitName { get; set; }
 
-        public  ObservableCollection<Car> CarsCollection { get; set; }
+        public ObservableCollection<Car> CarsCollection { get; set; }
+
+
+        private Car selectedCar;
+
+        public Car SelectedCar
+        {
+            get { return selectedCar; }
+            set { selectedCar = value; OnPropertyChanged(); }
+        }
+
 
         public MainPage()
         {
@@ -27,6 +39,23 @@ namespace ShowCollectionMauiApp
             FruitsCollection.Add("Banan");
             FruitsCollection.Add("Jabłko");
             FruitsCollection.Add("Tuskawka");
+
+            CarsCollection = new ObservableCollection<Car>()
+            {
+                new Car()
+                {
+                    Name = "Opel",
+                    Description = "Opelek"
+                },
+
+                new Car()
+                {
+                    Name = "Mazda",
+                    Description = "Mazdeczka"
+                },
+            };
+           
+            SelectedCar = CarsCollection.First();
             InitializeComponent();
         }
 

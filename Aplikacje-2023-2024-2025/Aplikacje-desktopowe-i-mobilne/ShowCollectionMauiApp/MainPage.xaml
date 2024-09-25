@@ -34,6 +34,13 @@
         <Button Text="Prześlij"
                 Clicked="Button_Clicked_New_Fruit"/>
 
+        <Label Text="Wybierz samochód"/>
+        <Picker ItemsSource="{Binding CarsCollection}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedCar}"/>
+
+        <Label Text="{Binding SelectedCar.Name}"/>
+        <Label Text="{Binding SelectedCar.Description}"/>
 
     </StackLayout>
 </ContentPage>
