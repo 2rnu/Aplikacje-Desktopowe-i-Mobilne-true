@@ -2,53 +2,72 @@
 {
     public partial class MainPage : ContentPage
     {
+        public string FirstNumber { get; set; }
+        public string SecondNumber { get; set; }
+        public bool IsOperationAdd { get; set; }
+        public bool IsOperationSub { get; set; }
+        public bool IsOperationMul { get; set; }
+        public bool IsOperationDiv { get; set; }
+
+        private string returnMessage;
+
+        public string ReturnMessage
+        {
+            get { return returnMessage; }
+            set { returnMessage = value; OnPropertyChanged(); }
+        }
+
+        private Color returnMessageColor;
+
+        public Color ReturnMessageColor
+        {
+            get { return returnMessageColor; }
+            set { returnMessageColor = value; OnPropertyChanged(); }
+        }
+
+
         public MainPage()
         {
             InitializeComponent();
         }
         private void Button_Clicked(object sender, EventArgs e)
         {
-            if (!int.TryParse(firstEntryNumber.Text, out int firstReadedNumber))
+            if (!int.TryParse(FirstNumber, out int firstNumber))
             {
-                //komunikat o istnieniu błędu
-                resaultLabel.Text = "Pierwsza liczba ma niedopuszczalny format! Sprzwdż, czy podana liczba nie ma żadnych znaków, ani liter.";
-                resaultLabel.TextColor = new Color(255, 0, 0);
+                //komunikat o błędzie
+                ReturnMessage = "Niepoprawna pierwsza liczba";
+                ReturnMessageColor = new Color(255, 0, 0);
                 return;
             }
 
-            if (!int.TryParse(secondEntryNumber.Text, out int secondReadedNumber))
+            if (!int.TryParse(SecondNumber, out int secondNumber))
             {
-                //komunikat o istnieniu błedu
-                resaultLabel.Text = "Druga liczba ma niedopuszczalny format! Sprzwdż, czy podana liczba nie ma żadnych znaków, ani liter.";
-                resaultLabel.TextColor = new Color(255, 0, 0);
+                //komunikat o błędzie
+                ReturnMessage = "Niepoprawna druga liczba";
+                ReturnMessageColor = new Color(255, 0, 0);
                 return;
             }
 
-            int resault = 0;
-
-            if (operationAddRadioButton.IsChecked)
+            int result = 0;
+            if (IsOperationAdd)
             {
-                resault = firstReadedNumber + secondReadedNumber;
+                result = firstNumber + secondNumber;
+            }
+            if (IsOperationSub)
+            {
+                result = firstNumber - secondNumber;
+            }
+            if (IsOperationMul)
+            {
+                result = firstNumber * secondNumber;
+            }
+            if (IsOperationDiv)
+            {
+                result = firstNumber / secondNumber;
             }
 
-            if (operationSubstrationRadioButton.IsChecked)
-            {
-                resault = firstReadedNumber - secondReadedNumber;
-            }
-
-            if (operationMultiplicationRadioButton.IsChecked)
-            {
-                resault = firstReadedNumber * secondReadedNumber;
-            }
-
-            if (operationDivisionRadioButton.IsChecked)
-            {
-                resault = firstReadedNumber / secondReadedNumber;
-            }
-
-            resaultLabel.Text = $"Wynik operacji {resault}";
-            resaultLabel.TextColor = Colors.Green;
-
+            ReturnMessage = $"Wynik operacji {result}";
+            ReturnMessageColor = Colors.Green;
         }
     }
 

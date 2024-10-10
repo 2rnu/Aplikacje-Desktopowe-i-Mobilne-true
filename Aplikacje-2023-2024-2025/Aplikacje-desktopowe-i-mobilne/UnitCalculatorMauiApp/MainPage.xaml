@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="UnitCalculatorMauiApp.MainPage">
+             x:Class="UnitCalculatorMauiApp.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
 
     <ScrollView BackgroundColor="Azure">
 
@@ -10,27 +12,36 @@
             <HorizontalStackLayout HorizontalOptions="Center">
                 
                 <Label Text="Docelowa miara:"/>
-                <Picker MaximumWidthRequest="400" MinimumWidthRequest="200" Margin="10" ItemsSource="{Binding UnitCollection}" SelectedItem="{Binding SelectedUnit}"></Picker>
-                
+                <Picker MaximumWidthRequest="400" 
+                        MinimumWidthRequest="200" 
+                        Margin="10" 
+                        ItemsSource="{Binding SizeFrom}" 
+                        SelectedItem="{Binding SelectedUnitOne}"/>
+
                 <Label Text="Przetworzona miara:"/>
-                <Picker MaximumWidthRequest="400" MinimumWidthRequest="200" Margin="10" ItemsSource="{Binding UnitCollection}" SelectedItem="{Binding SelectedUnit}"></Picker>
-                
+                <Picker MaximumWidthRequest="400" 
+                        MinimumWidthRequest="200" 
+                        Margin="10" 
+                        ItemsSource="{Binding SizeInto}" 
+                        SelectedItem="{Binding SelectedUnitSecond}"/>
+
             </HorizontalStackLayout>
             
             <VerticalStackLayout HorizontalOptions="Center">
                 
                 <Label Text="Wybierz miarę:"/>
-                <Entry MaximumWidthRequest="450"
+                <Entry MaximumWidthRequest="400"
                        MinimumWidthRequest="400"
                        Margin="20"
-                       BackgroundColor="Bisque"/>
+                       BackgroundColor="Bisque"
+                       Text="{Binding SizeToConvert}"/>
                 
                 <Button Text="Oblicz"
                         MinimumWidthRequest="400"
                         MaximumWidthRequest="400"
                         Clicked="Button_Clicked"/>
-                
-                <Label></Label>
+
+                <Label Text="{Binding FinalSize}"/>
             </VerticalStackLayout>
         </StackLayout>
     </ScrollView>

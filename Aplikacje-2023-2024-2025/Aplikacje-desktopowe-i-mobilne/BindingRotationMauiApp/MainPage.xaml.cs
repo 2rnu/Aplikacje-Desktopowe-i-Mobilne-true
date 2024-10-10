@@ -1,21 +1,23 @@
 ﻿using Microsoft.Maui.Controls.Shapes;
+//using static Android.Webkit.ConsoleMessage;
 
 namespace BindingRotationMauiApp
 {
     public partial class MainPage : ContentPage
     {
         public string Message { get; set; }
-        
+
         private string processedMessage;
 
         public string ProcessedMessage
         {
             get { return processedMessage; }
-            set { 
+            set
+            {
                 processedMessage = value;
                 OnPropertyChanged();
-                }
-                }
+            }
+        }
 
         public MainPage()
         {

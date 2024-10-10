@@ -7,53 +7,50 @@
 
     <ScrollView>
         <VerticalStackLayout 
-            BackgroundColor="LightGray"
-            Spacing="10">
+        Spacing="10">
 
-            <StackLayout Orientation="Horizontal" BackgroundColor="DarkGray">
-                <Label Text="{Binding Source = {x:Reference}}"
-                       VerticalOptions="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" 
-                       Placeholder="Wpisz pierwszą liczbę" 
-                       PlaceholderColor="Black"
-                       x:Name="firstEntryNumber"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Pierwsza liczba:"
+                   VerticalOptions="Center"
+                   Background="Aquamarine"/>
+                <Entry HorizontalOptions="FillAndExpand"
+                   Placeholder="Tutaj wpisz pierwszą liczbę"
+                   Text="{Binding FirstNumber}"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" BackgroundColor="DarkGray">
+            <StackLayout Orientation="Horizontal">
                 <Label Text="Druga liczba:"
-                        VerticalOptions="Center"/>
-                <Entry HorizontalOptions="FillAndExpand" 
-                       Placeholder="Wpisz drugą liczbę" 
-                       PlaceholderColor="Black"
-                       x:Name="secondEntryNumber"/>
+                   VerticalOptions="Center"
+                   Background="Aquamarine"/>
+                <Entry HorizontalOptions="FillAndExpand"
+                   Placeholder="Tutaj wpisz drugą liczbę"
+                   Text="{Binding SecondNumber}"/>
             </StackLayout>
 
             <Label Text="Opcje:"
-                   FontSize="20"
-                   FontFamily="Arial"
-                   FontAttributes="Italic,Bold"/>
+               FontSize="20"
+               FontFamily="Arial"
+               FontAttributes="Bold"/>
 
-            <RadioButton Content="Dodawanie:   +"
-                         x:Name="operationAddRadioButton"/>
-            <RadioButton Content="Odejmowanie:   -"
-                         x:Name="operationSubstrationRadioButton"/>
-            <RadioButton Content="Mnożenie:   ×"
-                         x:Name="operationMultiplicationRadioButton"/>
-            <RadioButton Content="Dzielenie:   ÷"
-                         x:Name="operationDivisionRadioButton"/>
+            <RadioButton Content="+"
+                     IsChecked="{Binding IsOperationAdd}"/>
+            <RadioButton Content="-"
+                     IsChecked="{Binding IsOperationSub}"/>
+            <RadioButton Content="*"
+                     IsChecked="{Binding IsOperationMul}"/>
+            <RadioButton Content="/"
+                     IsChecked="{Binding IsOperationDiv}"/>
 
             <Button Text="Oblicz"
                 HorizontalOptions="Center"
-                BackgroundColor="AliceBlue"
-                TextColor="Black"
-                WidthRequest="220"
-                HeightRequest="50"
+                WidthRequest="200"
+                HeightRequest="100"
+                FontSize="40"
+                Background="BurlyWood"
                 Clicked="Button_Clicked"/>
 
-            <Label
-                x:Name="resaultLabel"
-                Text="{Binding Source={x:Reference levelSlider}, Path=Value, StringFormat=Poziom suwaka {0}}"/>
-
+            <Label Text="{Binding ReturnMessage}"
+                   TextColor="{Binding ReturnMessageColor}"/>
         </VerticalStackLayout>
     </ScrollView>
 
