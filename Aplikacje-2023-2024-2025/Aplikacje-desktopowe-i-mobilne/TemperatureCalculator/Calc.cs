@@ -29,6 +29,7 @@ namespace TemperatureCalculator
         {
             Calculating = new Command(Calculate);
         }
+
         private void Calculate()
         {
             double result = 0;
