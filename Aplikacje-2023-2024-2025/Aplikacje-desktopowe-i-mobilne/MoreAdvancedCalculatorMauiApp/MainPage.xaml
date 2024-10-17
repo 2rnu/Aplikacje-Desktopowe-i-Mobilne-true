@@ -14,7 +14,7 @@
         
         <Label Grid.ColumnSpan="5" 
                BackgroundColor="Azure" 
-               Text="{Binding CalculationResault}"/>
+               Text="{Binding CalculationResult}"/>
 
         <Button Text="7" 
                 Grid.Row="1" 

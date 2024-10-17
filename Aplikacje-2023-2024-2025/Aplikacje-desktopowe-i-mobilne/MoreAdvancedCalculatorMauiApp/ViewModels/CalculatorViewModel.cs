@@ -6,41 +6,48 @@ using System.Threading.Tasks;
 
 namespace MoreAdvancedCalculatorMauiApp.ViewModels
 {
-	public class CalculatorViewModel : BindableObject
-	{
-		private int calculationResault;
+    public class CalculatorViewModel : BindableObject
+    {
+        private int calculationResult;
+        public int CalculationResult
+        {
+            get { return calculationResult; }
+            set
+            {
+                calculationResult = value;
+                OnPropertyChanged();
 
-		public int CalculationResault
-		{
-			get { return calculationResault; }
-			set { calculationResault = value; OnPropertyChanged(); }
-		}
+            }
+        }
 
         private Command? numericCommand;
         public Command NumericCommand
-		{
-			get
-			{
-				if (numericCommand == null)
-					numericCommand = new Command<string>(strNumber =>
-					{
-						int digit = int.Parse(strNumber);
+        {
+            get
+            {
+                if (numericCommand == null)
+                    numericCommand = new Command<string>((strNumber) =>
+                    {
+                        int digit = int.Parse(strNumber);
 
-                        if (isOperationAction )
+                        if (isOperationAction == false)
                         {
-                            CalculationResault = CalculationResault * 10 + digit;
+                            CalculationResult = CalculationResult * 10 + digit;
                         }
                         else
                         {
-							prevValue = calculationResault;
-							calculationResault = digit;
-							isOperationAction = false;
+                            if (!isOperationEquilAction)
+                            {
+                                prevValue = CalculationResult;
+                            }
+                            CalculationResult = digit;
+                            isOperationAction = false;
+                            isOperationEquilAction = false;
                         }
-
                     });
-				return numericCommand;
-			}
-		}
+                return numericCommand;
+            }
+        }
 
         private Command? operationCommand;
         public Command OperationCommand
@@ -48,54 +55,56 @@ namespace MoreAdvancedCalculatorMauiApp.ViewModels
             get
             {
                 if (operationCommand == null)
-                    operationCommand = new Command<string>(operationSign=>
+                    operationCommand = new Command<string>((operationSign) =>
                     {
-						CalculationResault = Calculate(prevValue, CalculationResault, prevOperationSign);
-						prevOperationSign = operationSign;
+                        if (isOperationAction)
+                            return;
+                        CalculationResult = Calculate(prevValue, CalculationResult, prevOperationSign);
+                        prevOperationSign = operationSign;
                         isOperationAction = true;
                     });
-				return operationCommand;
+                return operationCommand;
             }
         }
 
-        private int Calculate(int firstValue, int secondValue, string operationSign)
+        private Command OperationEquilAction;
+
+        public Command operationEquilAction
         {
-			int value = 0;
-			
-			switch (operationSign)
-			{
-				case "+":
-					value = firstValue + secondValue; break;
-				case "-":
-					value = firstValue - secondValue; break;
-				case "*":
-					value = firstValue * secondValue; break;
-				case "/":
-					value = firstValue / secondValue; break;
-			}
-			return value;
+            get { 
+                    if(operationEquilAction == null)
+
+                }
+            set { isOperationEquilAction = value; }
         }
 
-		public string? prevOperationSign = "*";
-		public int prevValue = 1;
-		private bool isOperationAction = false;
+
+        private int Calculate(int firstValue, int secondValue, string operationSign)
+        {
+            int value = 0;
+
+            switch (operationSign)
+            {
+                case "+":
+                    value = firstValue + secondValue;
+                    break;
+                case "-":
+                    value = firstValue - secondValue;
+                    break;
+                case "*":
+                    value = firstValue * secondValue;
+                    break;
+                case "/":
+                    value = firstValue / secondValue;
+                    break;
+            }
+
+            return value;
+        }
+
+        private string prevOperationSign = "*";
+        private int prevValue = 1;
+        private bool isOperationAction = false;
+
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
