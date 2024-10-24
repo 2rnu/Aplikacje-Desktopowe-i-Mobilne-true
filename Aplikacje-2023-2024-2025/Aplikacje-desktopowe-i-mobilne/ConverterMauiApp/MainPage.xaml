@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConverterMauiApp.MainPage"
-             xmlns:converters="clr-namespace:ConverterMauiApp.Converters">
+             xmlns:converters="clr-namespace:ConverterMauiApp.Converters"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
     <ContentPage.Resources>
         <converters:GradeToTextGradeConverter x:Key="GradeToTextGradeConverter"/>
+        <converters:RgbToColorConverter x:Key="RgbToColorConverter"/>
         <converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
         <converters:BoolToTextConverter x:Key="BoolToTextConverter"
                                         TrueMessage="Dziękuję!"
@@ -42,7 +45,7 @@
                     TextColor="{Binding IsChecked, Source={x:Reference ageCheckBox}, Converter={x:StaticResource BoolToColorConverter}}"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal">q
+        <StackLayout Orientation="Horizontal">
             <Label Text="Zgoda rodzica"
                    VerticalOptions="Center"/>
             <CheckBox x:Name="parentCheckBox"/>
@@ -52,12 +55,36 @@
                     <Binding Source="{x:Reference parentCheckBox}" Path="IsChecked">
                         <Binding.Converter>
                             <converters:BoolToTextConverter TrueMessage="Tak"
-                                                    FalseMessage="Nie"/>
+                                                            FalseMessage="Nie"/>
                         </Binding.Converter>
                     </Binding>
                 </Label.Text>
             </Label>
         </StackLayout>
+
+        <Label Text="Czerwony"/>
+        <Slider Minimum="1"
+                Maximum="255"
+                x:Name="redSlider"/>
+        <Label Text="Zielony"/>
+        <Slider Minimum="1"
+                Maximum="255"
+               x:Name="greenSlider"/>
+        <Label Text="Niebieski"/>
+        <Slider Minimum="1"
+                Maximum="255"
+                x:Name="blueSlider"/>
+        <BoxView HeightRequest="100"
+                 WidthRequest="100"
+                 HorizontalOptions="Center">
+            <BoxView.Color>
+                <MultiBinding Converter="{x:StaticResource RgbToColorConverter}">
+                    <Binding Source="{x:Reference redSlider}" Path="Value" />
+                    <Binding Source="{x:Reference greenSlider}" Path="Value"/>
+                    <Binding Source="{x:Reference blueSlider}" Path="Value"/>
+                </MultiBinding>
+            </BoxView.Color>
+        </BoxView>
 
     </StackLayout>
 

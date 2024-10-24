@@ -10,7 +10,7 @@ namespace ConverterMauiApp.Converters
     class BoolToTextConverter : IValueConverter
     {
 
-        public string? TrueMewssage { get; set; }
+        public string? TrueMessage { get; set; }
         public string? FalseMessage { get; set; }
         public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
