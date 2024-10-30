@@ -9,7 +9,6 @@ class Program
 
         while (true)
         {
-            // Punkt 1: Pobranie liczby kostek
             int liczbaKostek;
             while (true)
             {
@@ -21,20 +20,16 @@ class Program
                 Console.WriteLine("Liczba musi być w przedziale 3-10. Spróbuj ponownie.");
             }
 
-            // Punkt 2: Losowanie kostek
             List<int> kostki = RzucKostkami(liczbaKostek, random);
 
-            // Punkt 3: Wypisanie wyników
             for (int i = 0; i < kostki.Count; i++)
             {
                 Console.WriteLine($"Kostka {i + 1}: {kostki[i]}");
             }
 
-            // Punkt 4: Liczenie punktów
             int punkty = ObliczPunkty(kostki);
             Console.WriteLine($"Suma punktów: {punkty}");
 
-            // Punkt 5: Zapytanie o kontynuację
             Console.Write("Czy chcesz powtórzyć grę? (t/n): ");
             char odpowiedz = Console.ReadKey().KeyChar;
             Console.WriteLine();
