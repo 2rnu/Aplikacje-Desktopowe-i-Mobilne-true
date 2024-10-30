@@ -8,26 +8,26 @@ class Program
 
         while (true)
         {
-            int liczbaKostek;
+            int diceAmount;
             while (true)
             {
                 Console.Write("Podaj liczbę kostek do rzucenia (od 3 do 10): ");
-                if (int.TryParse(Console.ReadLine(), out liczbaKostek) && liczbaKostek >= 3 && liczbaKostek <= 10)
+                if (int.TryParse(Console.ReadLine(), out diceAmount) && diceAmount >= 3 && diceAmount <= 10)
                 {
                     break;
                 }
                 Console.WriteLine("Liczba musi być w przedziale 3-10. Spróbuj ponownie.");
             }
 
-            int[] kostki = RzucKostkami(liczbaKostek, random);
+            int[] dice = RzucKostkami(diceAmount, random);
 
-            for (int i = 0; i < kostki.Length; i++)
+            for (int i = 0; i < dice.Length; i++)
             {
-                Console.WriteLine($"Kostka {i + 1}: {kostki[i]}");
+                Console.WriteLine($"Kostka {i + 1}: {dice[i]}");
             }
 
-            int punkty = ObliczPunkty(kostki);
-            Console.WriteLine($"Suma punktów: {punkty}");
+            int points = ObliczPunkty(dice);
+            Console.WriteLine($"Suma punktów: {points}");
 
             Console.Write("Czy chcesz powtórzyć grę? (t/n): ");
             char odpowiedz = Console.ReadKey().KeyChar;

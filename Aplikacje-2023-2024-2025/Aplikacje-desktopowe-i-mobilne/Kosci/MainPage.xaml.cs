@@ -26,11 +26,11 @@ namespace Kosci
                 sum += diceResults[i];
             }
 
-            DiceImage1.Source = $"dice_{diceResults[0]}.png";
-            DiceImage2.Source = $"dice_{diceResults[1]}.png";
-            DiceImage3.Source = $"dice_{diceResults[2]}.png";
-            DiceImage4.Source = $"dice_{diceResults[3]}.png";
-            DiceImage5.Source = $"dice_{diceResults[4]}.png";
+            DiceImage1.Source = $"k{diceResults[0]}.jpg";
+            DiceImage2.Source = $"k{diceResults[1]}.jpg";
+            DiceImage3.Source = $"k{diceResults[2]}.jpg";
+            DiceImage4.Source = $"k{diceResults[3]}.jpg";
+            DiceImage5.Source = $"k{diceResults[4]}.jpg";
 
             rollScore = sum;
             totalScore += sum;

@@ -12,31 +12,53 @@
                    FontSize="Large"/>
 
 			<Button x:Name="RollDiceButton"
-                    Text="Rzuć Kośćmi"
+                    Text="RZUĆ KOŚĆMI"
                     BackgroundColor="Chocolate"
                     Clicked="OnRollDiceClicked"/>
 
-			<Grid>
-				<Image x:Name="DiceImage1" 
+			<Grid HorizontalOptions="FillAndExpand">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image x:Name="DiceImage1" 
 					   Source="question.jpg" 
-					   MaximumWidthRequest="60" 
-					   MaximumHeightRequest="60"/>
+					   MaximumWidthRequest="80" 
+					   MaximumHeightRequest="80"
+                       Grid.Column="0"/>
+                
 				<Image x:Name="DiceImage2" 
 					   Source="question.jpg" 
-					   MaximumWidthRequest="60" 
-					   MaximumHeightRequest="60"/>
+					   MaximumWidthRequest="80" 
+					   MaximumHeightRequest="80"
+                       Grid.Column="1"/>
+                
 				<Image x:Name="DiceImage3" 
 					   Source="question.jpg" 
-					   MaximumWidthRequest="60" 
-					   MaximumHeightRequest="60"/>
+					   MaximumWidthRequest="80" 
+					   MaximumHeightRequest="80"
+                       Grid.Column="2"/>
+                
 				<Image x:Name="DiceImage4" 
 					   Source="question.jpg" 
-					   MaximumWidthRequest="60" 
-					   MaximumHeightRequest="60"/>
+					   MaximumWidthRequest="80" 
+					   MaximumHeightRequest="80"
+                       Grid.Column="3"/>
+                
 				<Image x:Name="DiceImage5" 
 					   Source="question.jpg" 
-					   MaximumWidthRequest="60" 
-					   MaximumHeightRequest="60"/>
+					   MaximumWidthRequest="80" 
+					   MaximumHeightRequest="80"
+                       Grid.Column="4"/>
 			</Grid>
 
 			<Label Text="Wynik rzutu:" 
@@ -45,7 +67,7 @@
 				   Text="0" 
 				   FontSize="Medium" />
 
-			<Label Text="Łączny wynik gry:" 
+			<Label Text="Wynik tego losowania:" 
 				   FontSize="Medium"/>
 			<Label x:Name="TotalScoreLabel" 
 				   Text="0" 
