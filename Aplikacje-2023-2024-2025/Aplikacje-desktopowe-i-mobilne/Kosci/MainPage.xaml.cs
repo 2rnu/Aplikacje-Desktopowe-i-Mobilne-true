@@ -7,7 +7,7 @@ namespace Kosci
     {
         int rollScore = 0;
         int totalScore = 0;
-        private readonly Random random;
+        private Random random;
 
         public MainPage()
         {
@@ -17,13 +17,13 @@ namespace Kosci
 
         private void OnRollDiceClicked(object sender, EventArgs e)
         {
-            int sum = 0;
             int[] diceResults = new int[5];
+            int[] counts = new int[7];
 
             for (int i = 0; i < 5; i++)
             {
                 diceResults[i] = random.Next(1, 7);
-                sum += diceResults[i];
+                counts[diceResults[i]]++;
             }
 
             DiceImage1.Source = $"k{diceResults[0]}.jpg";
@@ -32,10 +32,24 @@ namespace Kosci
             DiceImage4.Source = $"k{diceResults[3]}.jpg";
             DiceImage5.Source = $"k{diceResults[4]}.jpg";
 
-            rollScore = sum;
-            totalScore += sum;
+            rollScore = CalculateRollScore(counts);
+            totalScore += rollScore;
+
             RollScoreLabel.Text = rollScore.ToString();
             TotalScoreLabel.Text = totalScore.ToString();
+        }
+
+        private int CalculateRollScore(int[] counts)
+        {
+            int score = 0;
+            for (int i = 1; i <= 6; i++)
+            {
+                if (counts[i] > 1)
+                {
+                    score += i * counts[i];
+                }
+            }
+            return score;
         }
 
         private void OnResetScoreClicked(object sender, EventArgs e)

@@ -1,81 +1,73 @@
 ﻿using System;
-using System.Collections.Generic;
 
-class Program
+namespace GrawKosci
 {
-    static void Main(string[] args)
+    class Program
     {
-        Random random = new Random();
+        static int rollScore = 0;
+        static int totalScore = 0;
+        static Random random = new Random();
 
-        while (true)
+        static void Main(string[] args)
         {
-            int liczbaKostek;
             while (true)
             {
-                Console.Write("Podaj liczbę kostek do rzucenia (od 3 do 10): ");
-                if (int.TryParse(Console.ReadLine(), out liczbaKostek) && liczbaKostek >= 3 && liczbaKostek <= 10)
+                int diceAmmount;
+                while (true)
                 {
+                    Console.Write("Podaj liczbę kostek do rzucenia (od 3 do 10): ");
+                    if (int.TryParse(Console.ReadLine(), out diceAmmount) && diceAmmount >= 3 && diceAmmount <= 10)
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Liczba musi być w przedziale 3-10. Spróbuj ponownie.");
+                }
+
+                RollDice(diceAmmount);
+                Console.WriteLine($"Suma punktów: {rollScore}");
+                Console.WriteLine($"Łączny wynik gry: {totalScore}");
+
+                Console.Write("Czy chcesz powtórzyć grę? (t/n): ");
+                string odpowiedz = Console.ReadLine();
+
+                if (odpowiedz.ToLower() != "t")
+                {
+                    Console.WriteLine("Dziękujemy za grę!");
                     break;
                 }
-                Console.WriteLine("Liczba musi być w przedziale 3-10. Spróbuj ponownie.");
-            }
 
-            List<int> kostki = RzucKostkami(liczbaKostek, random);
-
-            for (int i = 0; i < kostki.Count; i++)
-            {
-                Console.WriteLine($"Kostka {i + 1}: {kostki[i]}");
-            }
-
-            int punkty = ObliczPunkty(kostki);
-            Console.WriteLine($"Suma punktów: {punkty}");
-
-            Console.Write("Czy chcesz powtórzyć grę? (t/n): ");
-            char odpowiedz = Console.ReadKey().KeyChar;
-            Console.WriteLine();
-            if (char.ToLower(odpowiedz) != 't')
-            {
-                Console.WriteLine("Dziękujemy za grę!");
-                break;
+                Console.WriteLine();
             }
         }
-    }
 
-    static List<int> RzucKostkami(int liczbaKostek, Random random)
-    {
-        List<int> wyniki = new List<int>();
-        for (int i = 0; i < liczbaKostek; i++)
+        static void RollDice(int diceAmmount)
         {
-            wyniki.Add(random.Next(1, 7)); // Losowanie z przedziału 1-6
+            rollScore = 0;
+            int[] diceResults = new int[diceAmmount];
+            int[] counts = new int[7]; 
+
+            for (int i = 0; i < diceAmmount; i++)
+            {
+                diceResults[i] = random.Next(1, 7);
+                Console.WriteLine($"Kostka {i + 1}: {diceResults[i]}");
+                counts[diceResults[i]]++; 
+            }
+
+            for (int i = 1; i <= 6; i++)
+            {
+                if (counts[i] > 1)
+                {
+                    rollScore += i * counts[i];
+                }
+            }
+
+            totalScore += rollScore;
         }
-        return wyniki;
-    }
 
-    static int ObliczPunkty(List<int> kostki)
-    {
-        Dictionary<int, int> licznik = new Dictionary<int, int>();
-        int punkty = 0;
-
-        foreach(var kostka in kostki)
+        static void ResetScore()
         {
-            if (licznik.ContainsKey(kostka))
-            {
-                licznik[kostka]++;
-            }
-            else
-            {
-                licznik[kostka] = 1;
-            }
+            rollScore = 0;
+            totalScore = 0;
         }
-
-        foreach(var par in licznik)
-        {
-            if (par.Value >= 2)
-            {
-                punkty += par.Key * par.Value;
-            }
-        }
-
-        return punkty;
     }
 }
