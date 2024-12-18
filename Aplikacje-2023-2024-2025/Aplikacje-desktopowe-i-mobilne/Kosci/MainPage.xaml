@@ -6,7 +6,7 @@
 
 	<ScrollView>
 		<VerticalStackLayout>
-			<Label Text="Gra w kości. Autor -----------"
+			<Label Text="Gra w kości. Autor Gabriel Achler"
                    BackgroundColor="Brown"
                    TextColor="White"
                    FontSize="Large"/>

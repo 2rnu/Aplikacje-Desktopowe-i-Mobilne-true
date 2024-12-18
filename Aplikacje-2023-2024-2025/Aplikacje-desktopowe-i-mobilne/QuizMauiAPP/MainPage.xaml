@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizMauiAPP.MainPage"
+             xmlns:local="clr-namespace:QuizMauiAPP">
+
+    <ContentPage.BindingContext>
+        <local:QuizLogicViewmodel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="\pytanie"/>
+
+            <RadioButton Content="{Binding}"/>
+            <RadioButton Content="{Binding}"/>
+            <RadioButton Content="{Binding}"/>
+            <RadioButton Content="{Binding}"/>
+
+            <Button Text="Wcześniejsze pytanie"/>
+            <Button Text="Następne pytanie"/>
+            <Button Text="Sprawdź"/>
+            <Button Text="Od nowa"/>
+
+            <Label Text="{Binding isQuestionCorrect}"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
