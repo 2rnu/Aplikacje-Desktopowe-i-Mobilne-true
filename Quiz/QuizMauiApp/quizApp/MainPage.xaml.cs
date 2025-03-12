@@ -1,4 +1,5 @@
-﻿namespace quizApp
+﻿
+namespace quizApp
 {
     public partial class MainPage : ContentPage
     {

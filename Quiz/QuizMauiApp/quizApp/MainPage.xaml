@@ -15,10 +15,10 @@
         </StackLayout>
 
         <StackLayout Margin="15" Padding="25, 15">
-            <RadioButton Content="{Binding Answer1Label}" FontSize="15" IsChecked="{Binding Answer1RadioButton}"/>
-            <RadioButton Content="{Binding Answer2Label}" FontSize="15" IsChecked="{Binding Answer2RadioButton}"/>
-            <RadioButton Content="{Binding Answer3Label}" FontSize="15" IsChecked="{Binding Answer3RadioButton}"/>
-            <RadioButton Content="{Binding Answer4Label}" FontSize="15" IsChecked="{Binding Answer4RadioButton}"/>
+            <RadioButton BackgroundColor="Red" Content="{Binding AnswerLabel1}" FontSize="15" IsChecked="{Binding AnswerRadiobutton1}"/>
+            <RadioButton BackgroundColor="Red" Content="{Binding AnswerLabel2}" FontSize="15" IsChecked="{Binding AnswerRadiobutton2}"/>
+            <RadioButton BackgroundColor="Red" Content="{Binding AnswerLabel3}" FontSize="15" IsChecked="{Binding AnswerRadiobutton3}"/>
+            <RadioButton BackgroundColor="Red" Content="{Binding AnswerLabel4}" FontSize="15" IsChecked="{Binding AnswerRadiobutton4}"/>
         </StackLayout>
 
         <Label Text="{Binding Result}"

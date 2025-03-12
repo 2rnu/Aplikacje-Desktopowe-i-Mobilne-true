@@ -10,21 +10,21 @@ public class QuizRepository
         dbContext = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public Question? DownloadCurrentQuestion(int id)
+    public Question? GetCurrentQuestion(int id)
     {
         return dbContext.Questions
             .FirstOrDefault(p => p.Id == id);
     }
 
 
-    public List<Answer> DownloadCurrentAnswers(int id)
+    public List<Answer> GetCurrentAnswers(int id)
     {
         return dbContext.Answers
             .Where(p => p.QuestionId == id)
             .ToList();
     }
 
-    public int DownloadQuestionsAmount()
+    public int GetQuestionsAmount()
     {
         return dbContext.Questions.Count();
     }

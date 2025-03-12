@@ -30,7 +30,7 @@ public partial class QuizDBContext : DbContext
         modelBuilder
             .UseCollation("utf8_polish_ci")
             .HasCharSet("utf8");
-        
+
         modelBuilder.Entity<Answer>()
         .HasOne<Question>()
         .WithMany()
