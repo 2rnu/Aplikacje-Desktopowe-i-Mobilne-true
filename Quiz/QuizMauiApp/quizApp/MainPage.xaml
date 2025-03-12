@@ -1,0 +1,36 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="quizApp.MainPage"
+             xmlns:local="clr-namespace:Quiz.ViewModels">
+    <ContentPage.BindingContext>
+        <local:QuizViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <StackLayout>
+            <Label Text="{Binding QuestionLabel}"
+               Margin="15"
+               Padding="25, 15"
+               FontSize="25"/>
+        </StackLayout>
+
+        <StackLayout Margin="15" Padding="25, 15">
+            <RadioButton Content="{Binding Answer1Label}" FontSize="15" IsChecked="{Binding Answer1RadioButton}"/>
+            <RadioButton Content="{Binding Answer2Label}" FontSize="15" IsChecked="{Binding Answer2RadioButton}"/>
+            <RadioButton Content="{Binding Answer3Label}" FontSize="15" IsChecked="{Binding Answer3RadioButton}"/>
+            <RadioButton Content="{Binding Answer4Label}" FontSize="15" IsChecked="{Binding Answer4RadioButton}"/>
+        </StackLayout>
+
+        <Label Text="{Binding Result}"
+           Margin="50, 0"
+           FontSize="25"
+           TextColor="{Binding ResultColor}"/>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button Text="Wcześniejsze pytanie" Command="{Binding PreviousQuestionCommand}"/>
+            <Button Text="Następne pytanie" Command="{Binding NextQuestionCommand}"/>
+            <Button Text="Sprawdź odpowiedź" Command="{Binding SelectAnswerCommand}"/>
+            <Button Text="Od nowa" Command="{Binding ResetQuizCommand}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

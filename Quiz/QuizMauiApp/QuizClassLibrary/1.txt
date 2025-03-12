@@ -1,0 +1,156 @@
+using QuizClassLibrary;
+using QuizClassLibrary.Models;
+using System.Collections.ObjectModel;
+
+namespace Quiz.ViewModels
+{
+    public class QuizViewModel : BindableObject
+    {
+        private readonly QuizRepository quizRepository;
+        private int currentQuestionIndex = 1;
+
+        public Question? CurrentQuestion { get; set; }
+        public List<Answer> Answers { get; set; }
+
+        private string questionLabel;
+        public string QuestionLabel
+        {
+            get => questionLabel;
+            set { questionLabel = value; OnPropertyChanged(); }
+        }
+
+        private string answer1Label;
+        public string Answer1Label
+        {
+            get => answer1Label;
+            set { answer1Label = value; OnPropertyChanged(); }
+        }
+
+        private string answer2Label;
+        public string Answer2Label
+        {
+            get => answer2Label;
+            set { answer2Label = value; OnPropertyChanged(); }
+        }
+
+        private string answer3Label;
+        public string Answer3Label
+        {
+            get => answer3Label;
+            set { answer3Label = value; OnPropertyChanged(); }
+        }
+
+        private string answer4Label;
+        public string Answer4Label
+        {
+            get => answer4Label;
+            set { answer4Label = value; OnPropertyChanged(); }
+        }
+
+        private bool answer1RadioButton;
+        public bool Answer1RadioButton
+        {
+            get => answer1RadioButton;
+            set { answer1RadioButton = value; OnPropertyChanged(); }
+        }
+
+        private bool answer2RadioButton;
+        public bool Answer2RadioButton
+        {
+            get => answer2RadioButton;
+            set { answer2RadioButton = value; OnPropertyChanged(); }
+        }
+
+        private bool answer3RadioButton;
+        public bool Answer3RadioButton
+        {
+            get => answer3RadioButton;
+            set { answer3RadioButton = value; OnPropertyChanged(); }
+        }
+
+        private bool answer4RadioButton;
+        public bool Answer4RadioButton
+        {
+            get => answer4RadioButton;
+            set { answer4RadioButton = value; OnPropertyChanged(); }
+        }
+
+        private string result;
+        public string Result
+        {
+            get => result;
+            set { result = value; OnPropertyChanged(); }
+        }
+
+        private Color resultColor;
+        public Color ResultColor
+        {
+            get => resultColor;
+            set { resultColor = value; OnPropertyChanged(); }
+        }
+
+        public Command NextQuestionCommand { get; }
+        public Command PreviousQuestionCommand { get; }
+        public Command SelectAnswerCommand { get; }
+        public Command ResetQuizCommand { get; }
+
+        public QuizViewModel(QuizRepository repository)
+        {
+            quizRepository = repository;
+            NextQuestionCommand = new Command(NextQuestion);
+            PreviousQuestionCommand = new Command(PreviousQuestion);
+            SelectAnswerCommand = new Command(CheckAnswer);
+            ResetQuizCommand = new Command(ResetQuiz);
+            LoadQuestion();
+        }
+
+        private void LoadQuestion()
+        {
+            CurrentQuestion = quizRepository.DownloadCurrentQuestion(currentQuestionIndex);
+            if (CurrentQuestion != null)
+            {
+                Answers = quizRepository.DownloadCurrentAnswers(currentQuestionIndex);
+                QuestionLabel = CurrentQuestion.Question1;
+                Answer1Label = Answers.Count > 0 ? Answers[0].Answer1 : "";
+                Answer2Label = Answers.Count > 1 ? Answers[1].Answer1 : "";
+                Answer3Label = Answers.Count > 2 ? Answers[2].Answer1 : "";
+                Answer4Label = Answers.Count > 3 ? Answers[3].Answer1 : "";
+            }
+            OnPropertyChanged(nameof(CurrentQuestion));
+        }
+
+        private void NextQuestion()
+        {
+            currentQuestionIndex = (currentQuestionIndex % quizRepository.DownloadQuestionsAmount()) + 1;
+            LoadQuestion();
+        }
+
+        private void PreviousQuestion()
+        {
+            currentQuestionIndex--;
+            if (currentQuestionIndex == 0)
+                currentQuestionIndex = quizRepository.DownloadQuestionsAmount();
+            LoadQuestion();
+        }
+
+        private void CheckAnswer()
+        {
+            if (Answers.Count == 0) return;
+
+            bool isCorrect = (Answer1RadioButton && Answers[0].IsCorrect) ||
+                             (Answer2RadioButton && Answers[1].IsCorrect) ||
+                             (Answer3RadioButton && Answers[2].IsCorrect) ||
+                             (Answer4RadioButton && Answers[3].IsCorrect);
+
+            Result = isCorrect ? "To prawid≥owa odpowiedü!" : "To nieprawid≥owa odpowiedü!";
+            ResultColor = isCorrect ? Colors.Green : Colors.Red;
+        }
+
+        private void ResetQuiz()
+        {
+            currentQuestionIndex = 1;
+            Result = "";
+            LoadQuestion();
+        }
+    }
+}
