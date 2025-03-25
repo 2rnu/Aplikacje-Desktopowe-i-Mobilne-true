@@ -69,13 +69,6 @@ namespace Quiz.ViewModels
             Result = "To nieprawidłowa odpowiedź!";
             ResultColor = Colors.Red;
         }
-
-        private void ResetQuiz()
-        {
-            currentQuestionIndex = 1;
-            Result = "";
-            LoadQuestion();
-        }
     }
 }
 

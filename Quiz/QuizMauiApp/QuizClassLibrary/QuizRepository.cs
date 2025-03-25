@@ -5,7 +5,7 @@ public class QuizRepository
 {
     private readonly QuizDBContext dbContext;
 
-    public QuizRepository(QuizDBContext context) // Wstrzykiwanie zależności
+    public QuizRepository(QuizDBContext context)
     {
         dbContext = context ?? throw new ArgumentNullException(nameof(context));
     }
