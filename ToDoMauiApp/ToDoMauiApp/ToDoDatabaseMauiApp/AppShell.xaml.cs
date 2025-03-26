@@ -1,4 +1,4 @@
-﻿namespace PeopleDatabaseMauiApp
+﻿namespace ToDoDatabaseMauiApp
 {
     public partial class AppShell : Shell
     {

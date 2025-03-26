@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace PeopleDatabaseMauiApp
+namespace ToDoDatabaseMauiApp
 {
     public static class MauiProgram
     {
