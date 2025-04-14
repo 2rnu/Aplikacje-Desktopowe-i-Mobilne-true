@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ToDoListMauiApp.ViewModels"
+             x:Class="ToDoListMauiApp.MainPage"
+             x:Name="MainPage"
+             BackgroundColor="#F0F4F8">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20" >
+            <Label Text="📝 My To-Do List" 
+                   FontSize="32" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#333" />
+
+            <Frame CornerRadius="12" Padding="16" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Add New Task" FontSize="18" TextColor="#555" />
+
+                    <Entry Placeholder="Enter task content"
+                           Text="{Binding TaskContent}"
+                           BackgroundColor="#F5F5F5"
+                           HeightRequest="40"
+                           TextColor="#222" />
+
+                    <Button Text="Add Task"
+                            Command="{Binding AddTaskCommand}"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="10"
+                            HeightRequest="45"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Label Text="Active Tasks"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#333"
+                   Margin="0,10,0,0" />
+
+            <CollectionView ItemsSource="{Binding ActiveTasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" Padding="12" Margin="0,4" CornerRadius="10" HasShadow="True">
+                            <HorizontalStackLayout VerticalOptions="Center" Spacing="12">
+                                <Label Text="{Binding Content}" VerticalOptions="Center" TextColor="#222" FontSize="16" />
+
+                                <HorizontalStackLayout Spacing="8" HorizontalOptions="EndAndExpand">
+                                    <Button Text="✔"
+                                            BackgroundColor="#2196F3"
+                                            TextColor="White"
+                                            CornerRadius="8"
+                                            WidthRequest="40"
+                                            Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.MarkTaskAsDoneCommand}"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Text="🗑"
+                                            BackgroundColor="#F44336"
+                                            TextColor="White"
+                                            CornerRadius="8"
+                                            WidthRequest="40"
+                                            Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.MarkTaskAsDeletedCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Deleted Tasks -->
+            <Label Text="Deleted Tasks"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#666"
+                   Margin="0,10,0,0" />
+
+            <CollectionView ItemsSource="{Binding DeletedTasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#EEEEEE" Padding="10" Margin="0,4" CornerRadius="10">
+                            <Label Text="{Binding Content}" FontSize="16" TextColor="#888" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
