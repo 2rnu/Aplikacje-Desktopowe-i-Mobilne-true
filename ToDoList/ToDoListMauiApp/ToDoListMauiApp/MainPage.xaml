@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ToDoListMauiApp.ViewModels"
              x:Class="ToDoListMauiApp.MainPage"
-             x:Name="MainPage"
+             x:Name="MainPageXaml"
              BackgroundColor="#F0F4F8">
 
     <ContentPage.BindingContext>
@@ -56,7 +56,7 @@
                                             TextColor="White"
                                             CornerRadius="8"
                                             WidthRequest="40"
-                                            Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.MarkTaskAsDoneCommand}"
+                                            Command="{Binding Source={x:Reference MainPageXaml}, Path=BindingContext.MarkTaskAsDoneCommand}"
                                             CommandParameter="{Binding .}" />
 
                                     <Button Text="🗑"
@@ -64,7 +64,7 @@
                                             TextColor="White"
                                             CornerRadius="8"
                                             WidthRequest="40"
-                                            Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.MarkTaskAsDeletedCommand}"
+                                            Command="{Binding Source={x:Reference MainPageXaml}, Path=BindingContext.MarkTaskAsDeletedCommand}"
                                             CommandParameter="{Binding .}" />
                                 </HorizontalStackLayout>
                             </HorizontalStackLayout>
@@ -73,7 +73,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <!-- Deleted Tasks -->
             <Label Text="Deleted Tasks"
                    FontSize="20"
                    FontAttributes="Bold"

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoDatabaseMauiApp", "ToDoDatabaseMauiApp\ToDoDatabaseMauiApp.csproj", "{27F03DC0-173F-4810-AC36-86C84DE10DFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoDatabaseMauiApp", "PeopleDatabaseMauiApp\ToDoDatabaseMauiApp.csproj", "{27F03DC0-173F-4810-AC36-86C84DE10DFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoCodeFirstDatabaseLibrary", "ToDoCodeFirstDatabaseLibrary\ToDoCodeFirstDatabaseLibrary.csproj", "{CB6E9B9A-8041-4105-A8CB-3F2C69C47C75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoDatabaseClassLibrary", "PeopleDatabaseClassLibrary\ToDoDatabaseClassLibrary.csproj", "{57044402-903C-4AAA-98BC-496FE8998C30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,15 +19,15 @@ Global
 		{27F03DC0-173F-4810-AC36-86C84DE10DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F03DC0-173F-4810-AC36-86C84DE10DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27F03DC0-173F-4810-AC36-86C84DE10DFD}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{CB6E9B9A-8041-4105-A8CB-3F2C69C47C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB6E9B9A-8041-4105-A8CB-3F2C69C47C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB6E9B9A-8041-4105-A8CB-3F2C69C47C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB6E9B9A-8041-4105-A8CB-3F2C69C47C75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57044402-903C-4AAA-98BC-496FE8998C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57044402-903C-4AAA-98BC-496FE8998C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57044402-903C-4AAA-98BC-496FE8998C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57044402-903C-4AAA-98BC-496FE8998C30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FC00C52A-3516-4E50-A4E1-84EEC6BD5C26}
+		SolutionGuid = {EADE33FD-7F08-4DF0-BFEE-92D533298610}
 	EndGlobalSection
 EndGlobal
