@@ -12,7 +12,7 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20" >
-            <Label Text="📝 My To-Do List" 
+            <Label Text="To-Do List" 
                    FontSize="32" 
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
