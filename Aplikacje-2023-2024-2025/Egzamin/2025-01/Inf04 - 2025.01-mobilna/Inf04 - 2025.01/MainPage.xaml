@@ -1,0 +1,67 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Inf04___2025._01.MainPage"
+             BackgroundColor="LightBlue">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+
+            <Label Text="Urządzenia Domowe"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   Margin="5"/>
+
+            <Label Text="Autor: Aksel" 
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   Margin="5"/>
+
+            <StackLayout Spacing="10" Margin="0,20,0,0">
+                <Image Source="pralka.jpg" 
+                       HeightRequest="150"
+                       Margin="20,20,20,0"/>
+                <Label Text="Pralka" 
+                       TextColor="Navy" 
+                       FontSize="18"
+                       WidthRequest="150"/>
+                <Entry x:Name="WashingEntry"
+                       Placeholder="Podaj nr prania 1..12"
+                       Keyboard="Numeric"
+                       BackgroundColor="SkyBlue"
+                       TextColor="Navy"
+                       WidthRequest="150"/>
+                <Button Text="Zatwierdź"
+                        Clicked="OnClicked"
+                        BackgroundColor="RoyalBlue"
+                        TextColor="White" 
+                        WidthRequest="150"
+                        Padding="10"/>
+                <Label x:Name="LaundryNumberLabel"
+                       Text="Numer prania: nie podano"
+                       TextColor="Navy" 
+                       WidthRequest="150"/>
+            </StackLayout>
+
+            <StackLayout Spacing="10" Margin="0,20,0,0">
+                <Image Source="odkurzacz.jpg" 
+                       HeightRequest="150"
+                       Margin="20,20,20,0"/>
+                <Button x:Name="VacuumCleanerButton"
+                        Text="Włącz"
+                        Clicked="OnVacuumClicked"
+                        BackgroundColor="RoyalBlue"
+                        TextColor="White" 
+                        WidthRequest="150"
+                        Padding="10"/>
+                <Label x:Name="VacuumStatusLabel"
+                       Text="Odkurzacz wyłączony"
+                       TextColor="Navy" 
+                       WidthRequest="150"/>
+                <Label Text="Status: naładowany"
+                       TextColor="Navy" 
+                       WidthRequest="150"/>
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
