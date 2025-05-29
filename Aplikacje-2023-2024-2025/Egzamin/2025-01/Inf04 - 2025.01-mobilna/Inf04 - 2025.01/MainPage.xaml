@@ -4,10 +4,10 @@
              BackgroundColor="LightBlue">
 
     <ScrollView>
-        <StackLayout Padding="20" Spacing="20">
+        <StackLayout HorizontalOptions="Center">
 
             <Label Text="Urządzenia Domowe"
-                   FontSize="24"
+                   FontSize="20"
                    HorizontalOptions="Center"
                    Margin="5"/>
 
@@ -16,52 +16,72 @@
                    HorizontalOptions="Center"
                    Margin="5"/>
 
-            <StackLayout Spacing="10" Margin="0,20,0,0">
+            <HorizontalStackLayout>
+                
                 <Image Source="pralka.jpg" 
                        HeightRequest="150"
-                       Margin="20,20,20,0"/>
-                <Label Text="Pralka" 
-                       TextColor="Navy" 
+                       Margin="20,0,20,20"/>
+                
+                <VerticalStackLayout>
+                    
+                    <Label Text="Pralka" 
                        FontSize="18"
-                       WidthRequest="150"/>
-                <Entry x:Name="WashingEntry"
+                       WidthRequest="200"/>
+
+                    <Entry x:Name="WashingEntry"
                        Placeholder="Podaj nr prania 1..12"
                        Keyboard="Numeric"
                        BackgroundColor="SkyBlue"
                        TextColor="Navy"
-                       WidthRequest="150"/>
-                <Button Text="Zatwierdź"
+                       WidthRequest="200"/>
+
+                    <Button Text="Zatwierdź"
                         Clicked="OnClicked"
                         BackgroundColor="RoyalBlue"
                         TextColor="White" 
-                        WidthRequest="150"
-                        Padding="10"/>
-                <Label x:Name="LaundryNumberLabel"
+                        WidthRequest="175"
+                        Margin="10"/>
+
+                    <Label x:Name="LaundryNumberLabel"
+                       WidthRequest="200"
                        Text="Numer prania: nie podano"
                        TextColor="Navy" 
-                       WidthRequest="150"/>
-            </StackLayout>
+/>
+                    
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
 
-            <StackLayout Spacing="10" Margin="0,20,0,0">
+            <HorizontalStackLayout>
+
                 <Image Source="odkurzacz.jpg" 
                        HeightRequest="150"
-                       Margin="20,20,20,0"/>
-                <Button x:Name="VacuumCleanerButton"
+                       Margin="20,0,20,20"/>
+
+                <VerticalStackLayout>
+
+                    <Label Text="Odkuracz" 
+                       FontSize="18"
+                       WidthRequest="200"/>
+
+                    <Button x:Name="VacuumCleanerButton"
                         Text="Włącz"
                         Clicked="OnVacuumClicked"
                         BackgroundColor="RoyalBlue"
                         TextColor="White" 
-                        WidthRequest="150"
-                        Padding="10"/>
-                <Label x:Name="VacuumStatusLabel"
-                       Text="Odkurzacz wyłączony"
-                       TextColor="Navy" 
-                       WidthRequest="150"/>
-                <Label Text="Status: naładowany"
-                       TextColor="Navy" 
-                       WidthRequest="150"/>
-            </StackLayout>
+                        WidthRequest="175"
+                        Margin="10"/>
 
+                    <Label x:Name="VacuumStatusLabel"
+                       Text="Odkurzacz wyłączony"
+                        WidthRequest="200"
+                       TextColor="Navy" />
+
+                    <Label Text="Status: naładowany"
+                        WidthRequest="200"
+                       TextColor="Navy" />
+
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>
