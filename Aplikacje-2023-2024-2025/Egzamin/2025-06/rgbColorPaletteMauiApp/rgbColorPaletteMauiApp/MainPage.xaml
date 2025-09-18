@@ -1,0 +1,79 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="rgbColorPaletteMauiApp.MainPage">
+
+    <VerticalStackLayout Padding="20" 
+                         Spacing="20">
+
+        <BoxView x:Name="ColorPreview"
+                 HeightRequest="100"
+                 CornerRadius="10"
+                 Color="White"/>
+
+        <Label Text="Dobierz kolor suwakami:" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <Grid RowSpacing="15">
+            <Label Text="R" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   VerticalOptions="Center"/>
+            
+            <Slider x:Name="SliderR" 
+                    Minimum="0" 
+                    Maximum="255" 
+                    Grid.Row="0" 
+                    Grid.Column="1"
+                    ValueChanged="OnSliderValueChanged"/>
+            
+            <Label x:Name="LabelR" 
+                   Text="0" 
+                   Grid.Row="0" 
+                   Grid.Column="2" 
+                   VerticalOptions="Center"/>
+
+            <Label Text="G" 
+                   Grid.Row="1" 
+                   Grid.Column="0" 
+                   VerticalOptions="Center"/>
+            
+            <Slider x:Name="SliderG" 
+                    Minimum="0" 
+                    Maximum="255"
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    ValueChanged="OnSliderValueChanged"/>
+            
+            <Label x:Name="LabelG" 
+                   Text="0" Grid.Row="1" 
+                   Grid.Column="2" 
+                   VerticalOptions="Center"/>
+
+            <Label Text="B" Grid.Row="2" 
+                   Grid.Column="0" 
+                   VerticalOptions="Center"/>
+            
+            <Slider x:Name="SliderB" 
+                    Minimum="0" 
+                    Maximum="255"
+                    Grid.Row="2" Grid.Column="1"
+                    ValueChanged="OnSliderValueChanged"/>
+            
+            <Label x:Name="LabelB" 
+                   Text="0" 
+                   Grid.Row="2" 
+                   Grid.Column="2" 
+                   VerticalOptions="Center"/>
+        </Grid>
+
+        <Button Text="Pobierz" 
+                Clicked="OnGetColorClicked"
+                BackgroundColor="Blue" 
+                TextColor="White"/>
+
+        <Entry x:Name="RgbEntry" 
+               IsReadOnly="True" 
+               HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>
