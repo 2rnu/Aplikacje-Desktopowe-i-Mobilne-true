@@ -11,55 +11,25 @@
 
             <Label Text="Dobierz kolor suwakami i pobierz:"
                    HorizontalOptions="Center" />
-        
-            <StackLayout>
-                <Label Text="R" 
-                   Grid.Row="0" 
-                   Grid.Column="0" 
-                   VerticalOptions="Center"/>
-                <Slider Grid.Row="0" 
-                    Grid.Column="1"
-                    Minimum="0" 
-                    Maximum="255"
-                    Value="{Binding Red}"/>
-                <Label Text="{Binding Red}" 
-                   Grid.Row="0" 
-                   Grid.Column="2" 
-                   VerticalOptions="Center"/>
-            <StackLayout/>
 
-            <StackLayout>
-                <Label Text="G" 
-                   Grid.Row="1" 
-                   Grid.Column="0" 
-                   VerticalOptions="Center"/>
-                <Slider Grid.Row="1" 
-                       Grid.Column="1"
-                       Minimum="0" 
-                       Maximum="255"
-                       Value="{Binding Green}"/>
-                <Label Text="{Binding Green}" 
-                       Grid.Row="1" 
-                       Grid.Column="2" 
-                       VerticalOptions="Center"/>
-            <StackLayout/>
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="R" VerticalOptions="Center" />
+                <Slider Minimum="0" Maximum="255" Value="{Binding Red}" />
+                <Label Text="{Binding Red}" VerticalOptions="Center"/>
+            </StackLayout>
 
-                <StackLayout>
-                    <Label Text="B" 
-                           Grid.Row="2" 
-                           Grid.Column="0" 
-                           VerticalOptions="Center"/>
-            <Slider Grid.Row="2" 
-                    Grid.Column="1"
-                    Minimum="0" 
-                    Maximum="255"
-                    Value="{Binding Blue}"/>
-            <Label Text="{Binding Blue}" 
-                   Grid.Row="2" 
-                   Grid.Column="2" 
-                   VerticalOptions="Center"/>
-                  <StackLayout/>
-                    
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="G" VerticalOptions="Center" />
+                <Slider Minimum="0" Maximum="255" Value="{Binding Green}" />
+                <Label Text="{Binding Green}" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label Text="B" VerticalOptions="Center" />
+                <Slider Minimum="0" Maximum="255" Value="{Binding Blue}" />
+                <Label Text="{Binding Blue}" VerticalOptions="Center"/>
+            </StackLayout>
+
             <Button Text="Pobierz"
                     Clicked="OnGetColorClicked"
                     BackgroundColor="DarkGray"
